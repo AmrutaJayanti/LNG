@@ -26,25 +26,6 @@ app.use("/api/user",userRouter)
 app.use("/api/message",messageRouter)
 
 
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "https://livenetworkandgames.netlify.app"],
-    credentials: true,
-  })
-);
-
-app.use(express.json());
-app.use(cookieParser());
-
-
-app.use("/api/auth", authRouter);
-app.use("/api/user", userRouter);
-app.use("/api/message", messageRouter);
-
-server.listen(port, () => {
-  connectDb();
-  console.log("Server started on port " + port);
-});
 server.listen(port,()=>{
     connectDb()
     console.log("server started")
