@@ -8,4 +8,5 @@ const genToken = (user) => {
   );
 };
 
+
 export default genToken;
