@@ -9,7 +9,7 @@ const isAuth = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.userEmail = decoded.email;
-    req.userId = decoded.userId; // ✅ Add this line
+    req.userId = decoded.id;; // ✅ Add this line
     next();
   } catch (error) {
     return res.status(401).json({ message: "Unauthorized: Invalid token" });
