@@ -22,7 +22,7 @@ function SignUp() {
     setErr("");
 
     try {
-      const response = await axios.post(
+      let response = await axios.post(
         `${serverUrl}/api/auth/signup`,
         { userName, email, password },
         { withCredentials: true }
@@ -31,7 +31,7 @@ function SignUp() {
      
 
       // ✅ Update Redux state
-      dispatch(setUserData(user));
+      dispatch(setUserData(response.data));
       navigate("/profile");
       // Clear input fields
       setUserName("");
