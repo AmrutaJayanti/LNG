@@ -32,7 +32,7 @@ function Login() {
       setLoading(false);
       setErr("");
     } catch (error) {
-      console.log("Login Error →", error);
+      console.log(error);
       setLoading(false);
       setErr(error?.response?.data?.message || "Login failed");
     }
