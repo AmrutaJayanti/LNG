@@ -6,20 +6,19 @@ import { useDispatch } from "react-redux";
 import { setUserData } from "../redux/userSlice";
 
 function SignUp() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  let dispatch = useDispatch();
 
-  const [show, setShow] = useState(false);
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [err, setErr] = useState("");
+  let [show, setShow] = useState(false);
+  let [userName, setUserName] = useState("");
+  let [email, setEmail] = useState("");
+  let [password, setPassword] = useState("");
+  let [loading, setLoading] = useState(false);
+  let [err, setErr] = useState("");
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setErr("");
 
     try {
       let response = await axios.post(
@@ -38,15 +37,11 @@ function SignUp() {
       setEmail("");
       setPassword("");
       setLoading(false)
-      setErr(false)
+      setErr("")
     } catch (error) {
-      console.error("Signup error:", error);
-      const msg =
-        error?.response?.data?.message ||
-        "Something went wrong. Please try again.";
-      setErr(msg);
-    } finally {
+      console.log(error);
       setLoading(false);
+      setErr(error?.response?.data?.message);
     }
   };
 
