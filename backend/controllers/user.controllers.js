@@ -14,8 +14,6 @@ try {
 }
 }
 
-import uploadOnCloudinary from "../config/cloudinary.js";
-import User from "../models/user.model.js";
 
 export const editProfile = async (req, res) => {
   try {
