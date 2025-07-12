@@ -1,16 +1,11 @@
-// utils/genToken.js
 import jwt from "jsonwebtoken";
 
-const genToken = (userId) => {
-  try {
-    const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
-    });
-    return token;
-  } catch (error) {
-    console.error("genToken error:", error.message);
-    return null;
-  }
+const genToken = (user) => {
+  return jwt.sign(
+    { userId: user._id.toString(), email: user.email },
+    process.env.JWT_SECRET,
+    { expiresIn: "7d" }
+  );
 };
 
 export default genToken;
