@@ -22,7 +22,8 @@ const user=await User.create({
     userName,email,password:hashedPassword
 })
 
-const token=await genToken(user._id)
+const token = await genToken(user._id.toString());
+
 
 res.cookie("token",token,{
     httpOnly:true,
